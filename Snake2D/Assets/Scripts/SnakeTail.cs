@@ -4,9 +4,12 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SnakeTail : MonoBehaviour
 {
+    public TextMeshProUGUI tMPro;
+    public int score;
     private int indexOfTail=0;
     public Object fg;
     public float radius; // радиус элеменат змейки;
@@ -58,6 +61,8 @@ public class SnakeTail : MonoBehaviour
             Destroy(collision.gameObject);
             AddTail();
             foodGen.GenerateFood();
+            score++;
+            tMPro.text = $"SCORE:{score}";
         }
         else if (collision.gameObject.name != "Tail1" && collision.gameObject.name != "Tail2" && collision.gameObject.name != "Tail3")
         {
